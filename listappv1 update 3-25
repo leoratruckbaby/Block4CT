@@ -1,0 +1,100 @@
+"""
+Program goals:
+3. Pull the values stored at specific indexes
+4.Convert input to INTs
+5.Put all action in a while loop
+6.Add a exit
+"""
+import random
+myList = []
+unique_list = []
+
+def mainProgram():
+    #build our while loop
+    while True:
+        print("Howdy, there! We are working with lists!")
+        print("Will yah choose from the fallowing options. Type the number of the choice")
+        choice = input("""1. add to a list,
+2. return a value at in a list,or
+3.add a cattle of numbers
+4. random search
+5.linear search
+6.sortlist
+7.print lists
+8. Quit
+""")
+        if choice == "1":
+            addToList()
+        elif choice == "2":
+            indexValues()
+        elif choice == "3":
+            addABunch()
+        elif choice == "4":
+            randomSearch()
+        elif choice == "5":
+            linearSearch()
+        elif choice == "6":
+            sortList(myList)
+        elif choice == "7":
+            printLists()
+        else:
+            break
+
+def addToList():
+    print("Adding to a list! That there is a good choice!")
+    newItem = input("Type an integer here!   ")
+    myList.append(int(newItem))
+    #we need to think about errors
+
+
+def addABunch():
+    print(" We'er gonna add a whole cattel of number to you list!")
+    numToAdd = input(" How many new integera would you like to add?  ")
+    numRange = input(" And how high would you like these numbers to go?  ")
+    for x in range(0, int(numToAdd)):
+        myList.append(random.randint(0, int(numRange)))
+    print("your list is ready like chicken diner!")
+
+
+def sortList(myList):
+    #"myList" is the arugment this funchion takes.
+    for x in myList:
+        if x not in unique_list:
+            unique_list.append(x)
+    unique_list.sort()
+    showMe = input(" Wanna see your new, sorted list? y/n")
+    if showMe.lower() =="y":
+        print(unique_list)
+
+
+def randomSearch():
+    print("Yah wanna random search, well here yah go")
+    print(myList[random.randint(0, len(myList)-1)])
+
+def linearSearch():
+    print(" we're gonna to go through your list one at a time")
+    searchValue = input("what are yah lookin for?   ")
+    for x in range(len(myList)):
+        if myList [x] == int(searchValue):
+            print(" Your item is at index position {}".format(x))
+
+
+def indexValues():
+    print("At what index postition do yah want to search?")
+    indexPos = input("Type an index position here:     ")
+    print(myList[int(indexPos)])
+
+
+def printLists():
+    if len(unique_list)== 0:
+        print(myList)
+    else:
+        whichOne = input(" Which list do you wanna see? sorted or non sorted?   ")
+        if whichOne.lower() == "shorted":
+            print(unique_list)
+
+
+    
+if __name__ == "__main__":
+    mainProgram()
+
